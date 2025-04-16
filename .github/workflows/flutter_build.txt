@@ -1,0 +1,30 @@
+name: Flutter Build APK
+
+on:
+  push:
+    branches:
+      - master  # Agar aapka default branch 'main' hai, to isse 'main' karein
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.0'  # Aapke Flutter version ke mutabiq
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
