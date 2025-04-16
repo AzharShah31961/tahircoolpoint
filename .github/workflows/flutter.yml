@@ -16,7 +16,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.13.0" # ya aapke version ke mutabiq
+          flutter-version: "3.29.3" # ya aapke version ke mutabiq
 
       - name: Install dependencies
         run: flutter pub get
